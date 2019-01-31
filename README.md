@@ -1,21 +1,18 @@
 # Word-Guess-Game
 
 # Welcome
-In this project we're going to be building a responsive basic portfolio that will be styled using our own `style.css.`
-Using the ` @media screen ` tags with the `max-width s: 980px, 768px and 640px.`
-
+In this project we are going to be creating a word-guessing game, similar to the hangman!
+It was inspired by one of my favorite singers, Lana Del Rey.
+The hidden words are some of her most popular songs.
 ## Overview
-We use media tags because we dont want any of our content to get cut out when you make your window smaller.
-My portfolio is composed of three link pages in my Navbar:
-* [About]() - Main index page/ landing page
-* [Portfolio]() - Portfolio Page
-* [Contact]() - Contact Page
+This game will assign the user a random word, in this case one of Lana's songs. The word or words will be displayed in empty underscores. The user is given 9 lives, meaning they can guess the letter incorrectly only 9 times! If they guess the wrong letter they lose and a new random word is given to them.
+This game uses JavaScript to keep track of all the letters used and when they are clicked.
+This game will keep track of how many times a user WON or LOST the game!
 
 
-Below is a following example of what my basic portfolio looks like with the different `@media screen tags` 
-As you can see none of my content gets cut off even if I make the window smaller.
+Below is an example of the game functionality.
 
-![alt text](assets/images/responsive.gif)
+![alt text](wordguess.gif)
 
 ### Getting Started
 You will need to create your HTML files, and in a separate folder create an `assets` folder where you will have two folders
