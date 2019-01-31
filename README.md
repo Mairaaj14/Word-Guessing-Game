@@ -5,7 +5,7 @@ In this project we are going to be creating a word-guessing game, similar to the
 It was inspired by one of my favorite singers, Lana Del Rey.
 The hidden words are some of her most popular songs.
 ## Overview
-This game will assign the user a random word, in this case one of Lana's songs. The word or words will be displayed in empty underscores. The user is given 9 lives, meaning they can guess the letter incorrectly only 9 times! If they guess the wrong letter they lose and a new random word is given to them.
+This game will assign the user a random word, in this case one of Lana's songs. The word or words will be displayed in empty underscores. The user is given 9 lives, meaning they can guess the letter incorrectly only 9 times! But don't worry! The game will also display the wrong letters you have previously used that way you can keep track of what wrong letters not to use again! If they guess the wrong letter they lose and a new random word is given to them.
 This game uses JavaScript to keep track of all the letters used and when they are clicked.
 This game will keep track of how many times a user WON or LOST the game!
 
@@ -15,79 +15,70 @@ Below is an example of the game functionality.
 ![alt text](wordguess.gif)
 
 ### Getting Started
-You will need to create your HTML files, and in a separate folder create an `assets` folder where you will have two folders
-`css and images` in your css folder that's where you want your CSS stylesheet `style.css`.
-Your css file will be in charge of the front-end, you control and decide the styling of every part of your portfolio.
-To make our portfolio responsive, the @media screen tags must be added in your CSS file.
+You will need  your HTML file, your CSS file for styling depending how you want your game.
+In this project we incorporate JavaScript to add functionality rather than having s static page.
+With JS we are able to build an interaction with our user. 
 
-Here is a code snippet of how my media screen tags and my styling looks like:
+Here is a code snippet of my game.js file where I have an event listener that will know when a letter in the keyboard is clicked:
 
 ``` 
- @media screen and (max-width: 980px) {
-    .container {
-      width: 100%;
-      max-width: 960px;
-      margin: 0 auto;
-      clear: both;
-    }
-    #masthead {
-      position: fixed;
-      z-index: 99;
-      width: 100%;
-      max-width: 960px;
-      margin: 0 0 30px;
-      overflow: auto;
-      color: #ffffff;
-      background: #ffffff;
-      border-bottom: 2px solid #cccccc;
-    }
-  }
+ chooseWord();
+console.log(splitWord);
 
-  @media screen and (max-width: 768px) {
-    .container {
-      width: 100%;
-      max-width: 768px;
-      margin: 0 auto;
-      clear: both;
-    }
-    #masthead {
-      position: fixed;
-      z-index: 99;
-      width: 100%;
-      max-width: 768px;
-      margin: 0 0 30px;
-      overflow: auto;
-      color: #ffffff;
-      background: #ffffff;
-      border-bottom: 2px solid #cccccc;
-    }
-  }
+document.onkeyup = function (event) {
 
-  @media screen and (max-width: 640px) {
-    .container {
-      width: 100%;
-      max-width: 640px;
-      margin: 0 auto;
-      clear: both;
+var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+if (currentWord.indexOf(userGuess) > -1) {
+    // var test = [];
+    storedGuess.push(userGuess);
+    drawWord = "";
+    for (var i = 0; i < currentWord.length; i++) {
+        if (storedGuess.indexOf(currentWord[i]) > -1) {
+            drawWord += currentWord[i];
+        }
+        else {
+            drawWord += "_ ";
+        }
+        // test.push(currentWord[i]);
     }
-    #masthead {
-      position: static;
-      z-index: 99;
-      width: 100%;
-      max-width: 640px;
-      margin: 0 0 30px;
-      overflow: auto;
-      color: #ffffff;
-      background: #ffffff;
-      border-bottom: 2px solid #cccccc;
+    displayWord = drawWord;
+    console.log(drawWord);
+    // console.log(test);
+    if (displayWord == currentWord) {
+        wins++;
+        chooseWord();
+        storedGuess = [];
     }
-  }
+}
+else {
+    if (letterChoices.indexOf(userGuess) < 0) {
+        console.log(userGuess);
+    }
+    else if (letterBank.indexOf(userGuess) > -1) {
+        console.log(userGuess);
+    }
+    else {
+        guesses--;
+        letterBank.push(userGuess);
+        console.log(letterBank);
+        usedLetters = letterBank.join(" ");
+        console.log("Wrong Letter");
+        if (guesses < 0) {
+            losses++;
+            guesses = 9;
+            chooseWord();
+        }
+    }
+}
 
 ```
 
 ### Built With
 * HTML
 * CSS
+* JavaScript
+* Boostrap
 * [VSC](https) - Visual Studio Code, Editor
 * [Github Pages](https) - Deployment
 
