@@ -1,4 +1,4 @@
-# Word-Guess-Game
+# Word Guessing Game 🧠
 
 # Welcome
 In this project we are going to be creating a word-guessing game, similar to the hangman!
